@@ -1,18 +1,14 @@
-// AUDIO HERE
-// let hammerSound = document.querySelector('#hammersound');
 
-// hammer.addEventListener("click", e=> {
-//     console.log("clicked!")
-//     hammerSound.play()
-// })
 
 //WHEN HAMMER COLLIDES WITH TYPEWRITER
 const player = document.querySelector('#player');
 const typewriter = document.querySelector('#typeWriter');
 const hammer = document.querySelector('#hammer');
+let hammerSound = document.querySelector('#hammersound');
+let hammerStriker = document.querySelector('#hammerStriker');
 
 player.addEventListener('collide', function (e) {
-    console.log('Player has collided with typewriter #' + e.detail.body.id);
+    console.log('player has collided with typewriter #' + e.detail.body.id);
 
     // e.detail.target.el;  // Original entity (playerEl).
     // e.detail.body.el;    // Other entity, which playerEl touched.
@@ -29,16 +25,40 @@ function disappear() {
 
 // WHEN SPACE KEY IS PRESSED, rotate the hammer
 //SPACE BAR HAS A VALUE OF 32, IDK WHY
+
 document.body.onkeyup = function(e){
     if (e.keyCode == 32){
-        //rotate hammer
-        hammer.innerHTML = `<a-animation attribute="rotation"
-               dur="100"
-               fill="forwards"
-               direction ="alternate"
-               to="90 0 0"
-               repeat= "indefinite"
-              ></a-animation>`
+         //console.log("it works");
+         hammerStriker.emit('hit');
+        
     }
 }
+
+// // AUDIO HERE
+// hammer.addEventListener("click", e=> {
+//     console.log("clicked!")
+//     hammerSound.play()
+// })
+
+
+// gets the value of the rotation and gets the x value
+// tracking from 85 to 90 degreees
+var hammerRotation;
+var hammerRotationX;
+function monitorRotation(){
+    hammerRotation= hammerStriker.getAttribute("rotation");
+    hammerRotationX= hammerRotation.x
+    //console.log(hammerRotationX);
+    //console.log("test");
+    if (hammerRotationX > 85){
+        console.log("hit")
+    }
+}
+
+setInterval(monitorRotation, 100)
+
+
+
+
+
 
