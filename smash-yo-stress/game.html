@@ -11,20 +11,18 @@
 
 <body>
     <a-scene>
-        <!-- IMAGES HERE -->
+        <!-- IMAGES/SOUNDS HERE -->
         <a-assets>
+            <audio src="audio/hammersound.mp3" id="hammersound"></audio>
 
         </a-assets>
 
         <a-entity>
-            <a-camera position='0 0 0'>
+            <a-camera id="player" position='0 0 0' camera universal-controls kinematic-body position>
                 <!--HAMMER-->
                 <a-entity static-body position='2 -2.4 -2' rotation="0 180 0" gblock='https://poly.google.com/view/fRKx5yhenzR' id='hammer'></a-entity>
             </a-camera>
         </a-entity>
-
-
-
 
         <!--PLANE-->
         <a-plane static-body position="0 0 0 " rotation="-90 0 0 " width="100 " height="100 " color="#AED6F1"></a-plane>
@@ -35,7 +33,8 @@
 
 
         <!--TYPEWRITER TO SMASH-->
-        <a-entity static-body gblock="https://poly.google.com/view/2SmAWPS6_mH " id="typeWriter"></a-entity>
+        
+        <a-entity static-body gblock="https://poly.google.com/view/2SmAWPS6_mH" id="typeWriter"></a-entity>
 
 
 
